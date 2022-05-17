@@ -2,8 +2,13 @@
   "hosting": {
     "amplifyhosting": {
       "service": "amplifyhosting",
-      "type": "cicd",
-      "lastPushTimeStamp": "2022-05-17T15:29:45.315Z"
+      "type": "cicd"
+    }
+  },
+  "storage": {
+    "exampletable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation"
     }
   }
 }

@@ -1,0 +1,10 @@
+{
+  "resourceName": "exampletable",
+  "tableName": "exampletable",
+  "partitionKey": {
+    "fieldName": "id",
+    "fieldType": "string"
+  },
+  "gsi": [],
+  "triggerFunctions": []
+}
