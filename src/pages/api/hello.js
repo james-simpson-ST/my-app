@@ -7,27 +7,13 @@ export default function handler(req, res) {
   AWS.config.update({
     region: awsconfig.aws_dynamodb_table_schemas[0].region,
   });
-
-  // Create the DynamoDB service object
-  var ddb = new AWS.DynamoDB({ apiVersion: "2012-08-10" });
+  var dynamodb = new AWS.DynamoDB({apiVersion: '2012-08-10'});
   console.log("2");
   var params = {
-    TableName: awsconfig.aws_dynamodb_table_schemas[0].tableName,
-    Item: {
-      note: { S: "Example" },
-    },
+    TableName: awsconfig.aws_dynamodb_table_schemas[0].tableName
   };
-  console.log(`3 ${awsconfig.aws_dynamodb_table_schemas[0].tableName}}`);
-  let result;
-  ddb.putItem(params, function (err, data) {
-    if (err) {
-      result = err.message;
-      console.log("Error", err);
-    } else {
-      result = "success";
-      console.log("Success", data);
-    }
-  });
+  console.log(`3 ${params}}`);
+  const result = await dynamodb.scan(params).promise();
   console.log(`4 ${result}}`);
-  res.status(200).json({ message: result });
+  res.status(200).json({ message: JSON.stringify(result) });
 }
